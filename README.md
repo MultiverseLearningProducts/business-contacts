@@ -4,8 +4,9 @@ An application serving up business contacts, via Node, Express, and React
 ## Getting Started
 ### Option 1 - Run in development (or just without docker)
 Run two apps independently:
-- `cd server` and `npm run start-dev` (runs in watch mode on port 3000)
-- `cd client` and `npm start` (runs in watch mode on port 1234)
+- Open 2 terminals
+- In one terminal, run `cd server` and `npm run start-dev` (runs in watch mode on port 3000)
+- In the other terminal, run `cd client` and `npm start` (runs in watch mode on port 1234)
 - Visit the app at [localhost:1234](https://localhost:1234)
 
 ### Option 2 - Running with `docker-compose`
