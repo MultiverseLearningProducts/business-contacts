@@ -11,13 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/contacts', (req, res, next) => {
   res.json([
     {
-      name: 'John',
-      email: 'john@example.com',
-      phone: '555-555-5555',
-      department: 'IT',
-      position: 'Network Admin'
-    },
-    {
       name: 'Jane',
       email: 'jane@example.com',
       phone: '555-555-5555',
@@ -25,11 +18,11 @@ app.get('/contacts', (req, res, next) => {
       position: 'Software Engineer'
     },
     {
-      name: 'Joe',
-      email: 'joe@example.com',
+      name: 'John',
+      email: 'john@example.com',
       phone: '555-555-5555',
-      department: 'Sales',
-      position: 'Sales Manager'
+      department: 'IT',
+      position: 'Network Admin'
     },
     {
       name: 'Jill',
@@ -44,6 +37,13 @@ app.get('/contacts', (req, res, next) => {
       phone: '555-555-5555',
       department: 'HR',
       position: 'HR Manager'
+    },
+    {
+      name: 'Joe',
+      email: 'joe@example.com',
+      phone: '555-555-5555',
+      department: 'Sales',
+      position: 'Sales Manager'
     },
     {
       name: 'Josephine',
