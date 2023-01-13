@@ -2,7 +2,7 @@ FROM node:16-alpine
 
 WORKDIR /app
 
-COPY . /app
+COPY . .
 
 RUN apk add g++ make py3-pip
 
