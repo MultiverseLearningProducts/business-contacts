@@ -1,21 +1,72 @@
-# business-contacts
-An application serving up business contacts, via Node, Express, and React
+# Client Dockerfile setup
 
-## Getting Started
-### Option 1 - Run in development (or just without docker)
-Run two apps independently:
-- Open 2 terminals
-- In one terminal, run `cd server` and `npm run start-dev` (runs in watch mode on port 3000)
-- In the other terminal, run `cd client` and `npm start` (runs in watch mode on port 1234)
-- Visit the app at [localhost:1234](https://localhost:1234)
+1. Locate the client folder directory.
+2. Create a new file named `Dockerfile` in the client directory.
+3. Copy the following instructions into the `Dockerfile`:
 
-### Option 2 - Running with `docker-compose`
-(once docker-compose.yml created):
-- Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- `docker-compose up`
-- Visit the app at [localhost:1234](https://localhost:1234)
-- To stop the app: `docker-compose down --rmi all` (this also removes all images)
+FROM node:16-alpine
 
-## Apps
-- Node.js server
-- React front end
+WORKDIR /app
+
+COPY . /app
+
+RUN apk add g++ make py3-pip
+
+RUN npm install && npm run build
+
+EXPOSE 1234
+
+CMD ["node", "server.js"]
+
+
+4. Make sure that all the project files are inside the directory, otherwise the `COPY . /app` command will not work correctly.
+
+5. In the terminal, navigate to the project directory and run the following command:
+
+docker build -t project-name .
+
+This command will build the Docker image and tag it as "project-name".
+
+6. To run the container, use the following command:
+
+docker run -p 1234:1234 project-name
+
+
+This command will run the container and map the host port 1234 to the container's port 1234.
+
+7. The service can be accessed via http://localhost:1234
+
+# Server Dockerfile setup
+
+1. Create a new folder named `server` in your project directory.
+2. Using a text editor, create a new file named `Dockerfile` in the `server` folder.
+3. Copy the following instructions into the `Dockerfile`:
+
+FROM node:16-alpine
+ENV NODE_ENV=development
+WORKDIR /app
+COPY package.json .
+RUN apk add g++ make py3-pip
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD [ "node", "server.js" ]
+
+4. In the terminal, navigate to the server directory and run the following command:
+
+docker build -t server-image .
+
+This command will build the Docker image and tag it as "server-image".
+
+5. To run the container, use the following command:
+
+docker run -p 3000:3000 server-image
+
+
+
+
+
+
+
+
+
