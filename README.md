@@ -4,7 +4,7 @@
 2. Create a new file named `Dockerfile` in the client directory.
 3. Copy the following instructions into the `Dockerfile`:
 
-FROM node:16-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 
@@ -23,7 +23,7 @@ CMD ["node", "server.js"]
 
 5. In the terminal, navigate to the project directory and run the following command:
 
-docker build -t project-name .
+docker build -t project-name 
 
 This command will build the Docker image and tag it as "project-name".
 
@@ -42,7 +42,7 @@ This command will run the container and map the host port 1234 to the container'
 2. Using a text editor, create a new file named `Dockerfile` in the `server` folder.
 3. Copy the following instructions into the `Dockerfile`:
 
-FROM node:16-alpine
+FROM node:18-alpine
 ENV NODE_ENV=development
 WORKDIR /app
 COPY package.json .
@@ -54,7 +54,7 @@ CMD [ "node", "server.js" ]
 
 4. In the terminal, navigate to the server directory and run the following command:
 
-docker build -t server-image .
+docker build -t server-image 
 
 This command will build the Docker image and tag it as "server-image".
 
@@ -64,7 +64,11 @@ docker run -p 3000:3000 server-image
 
 
 
+# Docker commands:
 
+docker build -t name-of-image
+
+docker run -p matchPort:matchPort name-of-image
 
 
 
