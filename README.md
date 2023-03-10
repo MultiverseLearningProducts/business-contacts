@@ -1,4 +1,6 @@
-# Client Dockerfile setup
+# business-contacts
+An application serving up business contacts, via Node, Express, and React
+## 👉 Client Dockerfile setup
 
 1. Locate the client folder directory.
 2. Create a new file named `Dockerfile` in the client directory.
@@ -42,7 +44,7 @@ This command will run the container and map the host port 1234 to the container'
 
 7. The service can be accessed via http://localhost:1234
 
-# Server Dockerfile setup
+## 👉 Server Dockerfile setup
 
 1. Create a new folder named `server` in your project directory.
 2. Using a text editor, create a new file named `Dockerfile` in the `server` folder.
@@ -75,13 +77,30 @@ docker run -p 3000:3000 server-image
 ```
 
 
-# Docker commands:
+## Docker commands:
 
 ```sh
 docker build -t name-of-image
 docker run -p matchPort:matchPort name-of-image
 ```
 
+# Options for Running
+### Option 1 - Run in development (or just without docker)
+Run two apps independently:
+- Open 2 terminals
+- In one terminal, run `cd server` and `npm run start-dev` (runs in watch mode on port 3000)
+- In the other terminal, run `cd client` and `npm start` (runs in watch mode on port 1234)
+- Visit the app at [localhost:1234](https://localhost:1234)
 
+### Option 2 - Running with `docker-compose`
+**🚨 NOTE 🚨 If you have run the app locally first via above commands, you'll need to _delete the `node_modules` directory_ in at least the `client` project.** (this is because of a bug in one of the dependencies of Parcel, and a different version of Parcel is used in a Linux environment than in a Mac environment)
 
+Once you have created the respective `Dockerfile`s and `docker-compose.yml`:
+- If not done already, install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- run `docker-compose up`
+- Visit the app at [localhost:1234](https://localhost:1234)
+- To stop the app: `docker-compose down --rmi all` (this also removes all images)
 
+## Apps
+- Node.js server
+- React front end
