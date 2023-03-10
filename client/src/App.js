@@ -1,34 +1,28 @@
-import React, {useEffect, useState} from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import React from 'react';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom';
 import { Footer, Navbar } from './components';
-import { Contacts, Home } from './routes';
+import { Contacts, Home, Layout } from './routes';
 
-/*
-  make sure to install the latest version of react-router-dom
-  npm install react-router-dom@6
-*/
+import { loader } from './routes/Contacts';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<Layout />}>
+      <Route path='/' element={<Home />} loader={loader}  />
+      <Route path='/contacts' element={<Contacts />} loader={loader} />
+    </Route>
+  )
+);
 
 function App() {
-  const [contacts, setContacts] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/contacts')
-      .then(res => res.json())
-      .then(data => setContacts(data));
-  }, []);
-
-  return <>
-    <BrowserRouter>
-      <Navbar/>
-      <div className='mt-4 mx-auto h-75 w-75'>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/contacts' element={<Contacts contacts={contacts} />} />
-          </Routes>
-      </div>
-      <Footer/>
-    </BrowserRouter>
-  </>;
+  return (
+    <RouterProvider router={router}/>
+  );
 }
 
 export { App };

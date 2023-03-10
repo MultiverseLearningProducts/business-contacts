@@ -1,6 +1,15 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-function Contacts({contacts}) {
+export async function loader() {
+  const response = await fetch('http://localhost:3000/contacts');
+  const data = await response.json();  
+  return data;
+}
+
+function Contacts() {
+  const contacts = useLoaderData();
+  if (!contacts) return (<div>Loading...</div>);
   
   return <>
     <h1>Contacts</h1>
