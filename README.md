@@ -100,7 +100,3 @@ Once you have created the respective `Dockerfile`s and `docker-compose.yml`:
 - run `docker-compose up`
 - Visit the app at [localhost:1234](https://localhost:1234)
 - To stop the app: `docker-compose down --rmi all` (this also removes all images)
-
-## Apps
-- Node.js server
-- React front end
