@@ -86,7 +86,7 @@ docker run -p matchPort:matchPort name-of-image
 
 # Options for Running
 ### Option 1 - Run in development (or just without docker)
-Run two apps independently:
+The point of this example is _not_ to run the apps independently, but if you prefer, or if you're developing/updating them, you can run them independently:
 - Open 2 terminals
 - In one terminal, run `cd server` and `npm run start-dev` (runs in watch mode on port 3000)
 - In the other terminal, run `cd client` and `npm start` (runs in watch mode on port 1234)
@@ -95,7 +95,7 @@ Run two apps independently:
 ### Option 2 - Running with `docker-compose`
 **🚨 NOTE 🚨 If you have run the app locally first via above commands, you'll need to _delete the `node_modules` directory_ in at least the `client` project.** (this is because of a bug in one of the dependencies of Parcel, and a different version of Parcel is used in a Linux environment than in a Mac environment)
 
-Once you have created the respective `Dockerfile`s and `docker-compose.yml`:
+Once you have created the `docker-compose.yml`:
 - If not done already, install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - run `docker-compose up`
 - Visit the app at [localhost:1234](https://localhost:1234)
