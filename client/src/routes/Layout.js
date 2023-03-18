@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Outlet,
 } from 'react-router-dom';
-import { Navbar } from '../components/Navbar';
+import { Navbar, Footer } from '../components';
 
 function Layout() {
 
@@ -11,6 +11,9 @@ function Layout() {
         <Navbar />
 
         <Outlet />
+
+        <Footer />
+
       </div>
   );
 }
