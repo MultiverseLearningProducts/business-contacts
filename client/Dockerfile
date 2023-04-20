@@ -1,10 +1,8 @@
-FROM node:18-alpine
+FROM node
 
 WORKDIR /app
 
 COPY . .
-
-RUN apk add g++ make py3-pip
 
 RUN npm install && npm run build
 
