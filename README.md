@@ -8,13 +8,11 @@ An application serving up business contacts, via Node, Express, and React
 
 ```dockerfile
 
-FROM node:18-alpine
+FROM node
 
 WORKDIR /app
 
 COPY . /app
-
-RUN apk add g++ make py3-pip
 
 RUN npm install && npm run build
 
@@ -29,7 +27,7 @@ CMD ["node", "server.js"]
 5. In the terminal, navigate to the project directory and run the following command:
 
 ```sh
-docker build -t project-name 
+docker build . -t project-name 
 ```
 
 This command will build the Docker image and tag it as "project-name".
@@ -51,11 +49,10 @@ This command will run the container and map the host port 1234 to the container'
 3. Copy the following instructions into the `Dockerfile`:
 
 ```dockerfile
-FROM node:18-alpine
+FROM node
 ENV NODE_ENV=development
 WORKDIR /app
 COPY package.json .
-RUN apk add g++ make py3-pip
 RUN npm install
 COPY . .
 EXPOSE 3000
@@ -65,7 +62,7 @@ CMD [ "node", "server.js" ]
 4. In the terminal, navigate to the server directory and run the following command:
 
 ```sh
-docker build -t server-image 
+docker build . -t server-image 
 ```
 
 This command will build the Docker image and tag it as "server-image".
