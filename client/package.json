@@ -13,6 +13,7 @@
   "dependencies": {
     "bootstrap": "^5.1.3",
     "express": "4.18.1",
+    "lightningcss": "^1.19.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.9.0"
