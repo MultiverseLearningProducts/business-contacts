@@ -49,7 +49,7 @@ This command will run the container and map the host port 1234 to the container'
 3. Copy the following instructions into the `Dockerfile`:
 
 ```dockerfile
-FROM node:18-alpine
+FROM node
 ENV NODE_ENV=development
 WORKDIR /app
 COPY package.json .
