@@ -8,13 +8,11 @@ An application serving up business contacts, via Node, Express, and React
 
 ```dockerfile
 
-FROM node:18-alpine
+FROM node
 
 WORKDIR /app
 
-COPY . /app
-
-RUN apk add g++ make py3-pip
+COPY . .
 
 RUN npm install && npm run build
 
